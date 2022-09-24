@@ -1,4 +1,4 @@
-LED_PIN = 17
+LED_PIN = 27
 
 import RPi.GPIO as GPIO
 import time
