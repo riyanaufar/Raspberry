@@ -1,18 +1,28 @@
-LED_PIN = 4
-
 import RPi.GPIO as GPIO
-import time
 
-GPIO.setmode(GPIO.BCM)
+# duty cycle, calibrate if needed
+MIN_DUTY = 5
+MAX_DUTY = 10
 
-GPIO.setup(LED_PIN, GPIO.OUT)
+servo_signal_pin = 13
 
-try:
-    while True:
-        GPIO.output(LED_PIN, GPIO.HIGH)
-        time.sleep(1)
-        GPIO.output(LED_PIN, GPIO.LOW)
-        time.sleep(1)
-except KeyboardInterrupt:
+def deg_to_duty(deg):
+    return (deg - 0) * (MAX_DUTY- MIN_DUTY) / 180 + MIN_DUTY
+
+if __name__ == "__main__":
+    GPIO.setwarnings(False)
+    GPIO.setmode(GPIO.BCM)
+
+    GPIO.setup(servo_signal_pin, GPIO.OUT)
+    # set pwm signal to 50Hz
+    servo = GPIO.pwm(servo_signal_pin, 50)
+    servo.start(0)
+
+    # loop from 0 to 180
+    for deg in range(181):
+        duty_cycle = deg_to_duty(deg)    
+        servo.ChangeDutyCycle(duty_cycle)
+
+    # cleanup the gpio pins
     GPIO.cleanup()
-
+    
