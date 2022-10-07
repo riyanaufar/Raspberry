@@ -1,5 +1,7 @@
 import RPi.GPIO as gp  
- from time import sleep  
+import time
+from time import sleep  
+
  gp.setmode(gp.BOARD)  
  gp.setup(12,gp.OUT)  
  pwm=gp.PWM(12,50)  
