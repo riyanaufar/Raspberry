@@ -1,4 +1,4 @@
- import RPi.GPIO as gp  
+import RPi.GPIO as gp  
  from time import sleep  
  gp.setmode(gp.BOARD)  
  gp.setup(12,gp.OUT)  
