@@ -1,4 +1,4 @@
-import RPIO as GPIO
+import RPi.GPIO as GPIO
 
 # duty cycle, calibrate if needed
 MIN_DUTY = 5
