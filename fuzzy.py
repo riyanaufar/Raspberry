@@ -4,7 +4,7 @@ import RPi.GPIO as GPIO
 print('Testing for Fuzzzy Logic')
 
 sensor1 = input('Nilai ldr1 :')
-sensor2 = input('Nilai ldr2 :')
+sensor2 = input('Nilai ldr21 :')
 sensor3 = input('Nilai ldr3 :')
 sensor4 = input('Nilai ldr4 :')
 
