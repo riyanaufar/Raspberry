@@ -1,6 +1,3 @@
-import imp
-
-
 import time
 import Adafruit_ADS1x15
 
