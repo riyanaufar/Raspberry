@@ -14,7 +14,7 @@ ads.gain = 1
 #create single-ended input on channel 0
 chan = AnalogIn(ads, ADS.P0)
 
-print("{:>5}\t{:>5.5f}".format('raw', 'v'))
+print("{:>5}\t{:>5}".format('raw', 'v'))
 
 while True:
     print("{:>5}\t{:>5.5f}".format(chan.value, chan.voltage))
