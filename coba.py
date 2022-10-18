@@ -1,18 +1,20 @@
-LED_PIN = 4
+import imp
 
-import RPi.GPIO as GPIO
+
 import time
+import Adafruit_ADS1x15
 
-GPIO.setmode(GPIO.BCM)
+adc = Adafruit_ADS1x15.ADS1115()
+GAIN = 1
 
-GPIO.setup(LED_PIN, GPIO.OUT)
+Print('Reading values ...')
+print('| {0:>6} | {1:>6} | {2:>6} | {3:>6} |'.format(*range(4)))
+print('-' *37)
 
-try:
-    while True:
-        GPIO.output(LED_PIN, GPIO.HIGH)
-        time.sleep(1)
-        GPIO.output(LED_PIN, GPIO.LOW)
-        time.sleep(1)
-except KeyboardInterrupt:
-    GPIO.cleanup()
+while True:
+    values = [0]*4
+    for i in range(4):
+        values[i] = adc.read_adc(i, gain=GAIN)
 
+    print('| {0:>6} | {1:>6} | {2:>6} | {3:>6} |'.format(*values))
+    time.sleep(0.5)
