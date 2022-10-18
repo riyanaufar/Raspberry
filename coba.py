@@ -1,17 +1,21 @@
 import time
-import Adafruit_ADS1x15
+import board
+import busio
+import adafruit_ads1x15.ads1015 as ADS
+from adafruit_ads1x15.analog_in import AnalogIn
 
-adc = Adafruit_ADS1x15.ADS1115()
-GAIN = 1
+#Buat i2c bus
+i2c = busio.I2C(board.SCL, board.SDA)
 
-Print('Reading values ...')
-print('| {0:>6} | {1:>6} | {2:>6} | {3:>6} |'.format(*range(4)))
-print('-' *37)
+#buat ADC objek menggunakan i2c bus
+ads = ADS.ADS1015(i2c)
+ads.gain = 1
+
+#create single-ended input on channel 0
+chan = AnalogIn(ads, ADS.P0)
+
+print("{:>5}\t{:>5.5f}".format('raw', 'v'))
 
 while True:
-    values = [0]*4
-    for i in range(4):
-        values[i] = adc.read_adc(i, gain=GAIN)
-
-    print('| {0:>6} | {1:>6} | {2:>6} | {3:>6} |'.format(*values))
+    print("{:>5}\t{:>5.5f}".format(chan.value, chan.voltage))
     time.sleep(0.5)
