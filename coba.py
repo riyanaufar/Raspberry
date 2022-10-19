@@ -63,7 +63,7 @@ scaler_sensor = mapping(chan1.value, 0, 1023, 0, 300)
 print("{:>5}\t{:>5}".format('raw', 'v'))
 
 while True:
-    print("{:>5}\t{:>5.5f}".format(chan1.value, chan1.voltage))
-    time.sleep(0.5)
+    print("{:>5}\t{:>5.5f}".format(scaler_sensor, chan1.voltage))
+    time.sleep(0.1)
 
 
