@@ -51,7 +51,7 @@ scaler_sensor = make_interpolater(0, 1023, 0, 300)
 scaler_servo = make_interpolater(0, 1023, -40, 40)
 
 #now convert to scaled values using map
-scaled_ldr1 = map(scaler_sensor, chan1.value) #ldr left
+scaled_ldr1 = float(map(scaler_sensor, chan1.value)) #ldr left
 scaled_ldr2 = map(scaler_sensor, chan2.value) #ldr right
 scaled_ldr3 = map(scaler_sensor, chan3.value) #ldr up
 scaled_ldr4 = map(scaler_sensor, chan4.value) #ldr down
@@ -67,3 +67,5 @@ print("{:>5}\t{:>5}".format('raw', 'v'))
 while True:
     print("{:>5}\t{:>5.5f}".format(scaled_ldr1, scaled_ldr1.voltage))
     time.sleep(0.5)
+
+
