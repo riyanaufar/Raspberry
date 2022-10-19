@@ -38,7 +38,7 @@ def make_interpolater(left_min, left_max, right_min, right_max):
     rightSpan = right_max - right_min
 
     #compute the scale factor between left and right values
-    scaleFactor = int(rightSpan) / int(leftSpan)
+    scaleFactor = float(rightSpan) / float(leftSpan)
     
     #create interpolation func pre-calculated scaleFactor
     def interp_fn(value):
