@@ -44,7 +44,7 @@ def make_interpolater(left_min, left_max, right_min, right_max):
     def interp_fn(value):
         return right_min + (value-left_min)*scaleFactor
 
-    return interp_fn
+    return float(interp_fn)
 
 #RANGES
 scaler_sensor = make_interpolater(0, 1023, 0, 300)
