@@ -55,15 +55,28 @@ chan4 = AnalogIn(ads, ADS.P3) #ldr down
 #scaled_ldr3 = map(scaler_sensor, chan3.value) #ldr up
 #scaled_ldr4 = map(scaler_sensor, chan4.value) #ldr down
 
-def mapping(x, in_min, in_max, out_min, out_max):
-    return int((x - in_min)*(out_max-out_min)/(in_max-in_min)+out_min)
+#def mapping(x, in_min, in_max, out_min, out_max):
+#   return int((x - in_min)*(out_max-out_min)/(in_max-in_min)+out_min)
 
-scaler_sensor = mapping(chan1.value, 0, 1023, 0, 300)
+#scaler_sensor = mapping(chan1.value, 0, 1023, 0, 300)
+
+def translate(value, leftMin, leftMax, rightMin, rightMax):
+    leftSpan = leftMax - leftMin
+    rightSpan = rightMax - rightMin
+
+    valueScaled = float(value - leftMin) / float(leftSpan)
+
+    return rightMin + (valueScaled * rightSpan)
+
+scaler_Sensor = translate(chan1.value, 0, 1023, 0, 300)
+
+
+
 
 print("{:>5}\t{:>5}".format('raw', 'v'))
 
 while True:
-    print("{:>5}\t{:>5.5f}".format(scaler_sensor, chan1.voltage))
+    print("{:>5}\t{:>5.5f}".format(scaler_Sensor, chan1.voltage))
     time.sleep(0.1)
 
 
