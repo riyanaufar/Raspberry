@@ -8,6 +8,7 @@ from adafruit_ads1x15.analog_in import AnalogIn
 
 servo1PIN = 12
 servo2PIN = 13
+scaler_Sensor = 0
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(servo1PIN, GPIO.OUT)
 GPIO.setup(servo2PIN, GPIO.OUT)
