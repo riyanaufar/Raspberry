@@ -78,3 +78,5 @@ print("{:>5}\t{:>5}".format('raw', 'v'))
 while True:
     print("{:>5}\t{:>5.5f}".format(chan2.value, chan1.voltage))
     time.sleep(0.1)
+    print("{:>5}\n{:>5.5f}".format(chan2.value, chan2.voltage))
+    time.sleep(0.1)
