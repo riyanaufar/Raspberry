@@ -68,7 +68,7 @@ def translate(value, leftMin, leftMax, rightMin, rightMax):
 
     return rightMin + (valueScaled * rightSpan)
 
-scaler_Sensor = translate(chan1.value, 0, 1023, 0, 900)
+scaler_Sensor = translate(chan1.value, 0, 1023, 0, 300)
 
 
 
