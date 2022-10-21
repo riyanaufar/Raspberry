@@ -33,32 +33,23 @@ chan4 = AnalogIn(ads, ADS.P3) #ldr down
 
 
 #MAPPING LDR VALUE
-def make_interpolater(left_min, left_max, right_min, right_max):
-     rightSpan = right_max - right_min
+def remap(value, leftMin, leftMax, rightMin, rightMax):
+    # Figure out how 'wide' each range is
+    leftSpan = leftMax - leftMin
+    rightSpan = rightMax - rightMin
+    # Convert the left range into a 0-1 range (float)
+    valueScaled = int(value - leftMin) / int(leftSpan)
+    # Convert the 0-1 range into a value in the right range.
+    # return int(rightMin + (valueScaled * rightSpan))
+    return rightMin + (valueScaled * rightSpan)
 
-    #compute the scale factor between left and right values
-    scaleFactor = int(rightSpan) / int(leftSpan)
-    
-    #create interpolation func pre-calculated scaleFactor
-def interp_fn(value):
-        return right_min + (value-left_min)*scaleFactor
 
-        return interp_fn
 
-#RANGES
-scaler_sensor = make_interpolater(0, 1023, 0, 300)
-#caler_servo = make_interpolater(0, 1023, -40, 40)
 
-#now convert to scaled values using map
-scaled_ldr1 = map(scaler_sensor, chan1.value) #ldr left
-#scaled_ldr2 = map(scaler_sensor, chan2.value) #ldr right
-#scaled_ldr3 = map(scaler_sensor, chan3.value) #ldr up
-#scaled_ldr4 = map(scaler_sensor, chan4.value) #ldr down
+#def mapping(x, in_min, in_max, out_min, out_max):
+  # return int((x - in_min)*(out_max-out_min)/(in_max-in_min)+out_min)
 
-def mapping(x, in_min, in_max, out_min, out_max):
-   return int((x - in_min)*(out_max-out_min)/(in_max-in_min)+out_min)
-
-scaler_sensor = mapping(chan1.value, 0, 1023, 0, 300)
+#scaler_sensor = mapping(chan1.value, 0, 1023, 0, 300)
 
 #def translate(value, leftMin, leftMax, rightMin, rightMax):
  #   leftSpan = leftMax - leftMin
@@ -68,13 +59,16 @@ scaler_sensor = mapping(chan1.value, 0, 1023, 0, 300)
 
     #return rightMin + (valueScaled * rightSpan)
 
-scaler_Sensor = translate(AnalogIn(ads, ADS.P0).value, 0, 1023, 0, 300)
-
-
-
-
-print("{:>5}\t{:>5}".format('raw', 'v'))
-
 while True:
-    print("{:>5}\t{:>5.5f}".format(scaler_Sensor, chan1.voltage))
-    time.sleep(0.1)
+    scaler_Sensor = remap(chan1.value, 0, 1023, 0, 300)
+    print(scaler_Sensor)
+    time.sleep(2)
+
+
+
+
+#print("{:>5}\t{:>5}".format('raw', 'v'))
+
+#while True:
+ #   print("{:>5}\t{:>5.5f}".format(scaler_Sensor, chan1.voltage))
+  #  time.sleep(0.1)
