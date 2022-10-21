@@ -59,7 +59,7 @@ chan4 = AnalogIn(ads, ADS.P3) #ldr down
 def mapping(x, in_min, in_max, out_min, out_max):
    return int((x - in_min)*(out_max-out_min)/(in_max-in_min)+out_min)
 
-scaler_sensor = mapping(AnalogIn(ads, ADS.P0), 0, 1023, 0, 300)
+scaler_sensor = mapping(AnalogIn(ads, ADS.P0).value, 0, 1023, 0, 300)
 
 #def translate(value, leftMin, leftMax, rightMin, rightMax):
     #leftSpan = leftMax - leftMin
