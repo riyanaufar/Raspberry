@@ -76,5 +76,5 @@ scaler_Sensor = translate(AnalogIn(ads, ADS.P0).value, 0, 1023, 0, 300)
 print("{:>5}\t{:>5}".format('raw', 'v'))
 
 while True:
-    print("{:>5}\t{:>5.5f}".format(AnalogIn(scaler_Sensor, chan1.voltage))
+    print("{:>5}\t{:>5.5f}".format(scaler_Sensor, chan1.voltage))
     time.sleep(0.1)
