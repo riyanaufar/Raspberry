@@ -56,20 +56,20 @@ chan4 = AnalogIn(ads, ADS.P3) #ldr down
 #scaled_ldr3 = map(scaler_sensor, chan3.value) #ldr up
 #scaled_ldr4 = map(scaler_sensor, chan4.value) #ldr down
 
-#def mapping(x, in_min, in_max, out_min, out_max):
-#   return int((x - in_min)*(out_max-out_min)/(in_max-in_min)+out_min)
+def mapping(x, in_min, in_max, out_min, out_max):
+   return int((x - in_min)*(out_max-out_min)/(in_max-in_min)+out_min)
 
-#scaler_sensor = mapping(chan1.value, 0, 1023, 0, 300)
+scaler_sensor = mapping(chan1.value, 0, 1023, 0, 300)
 
-def translate(value, leftMin, leftMax, rightMin, rightMax):
-    leftSpan = leftMax - leftMin
-    rightSpan = rightMax - rightMin
+#def translate(value, leftMin, leftMax, rightMin, rightMax):
+    #leftSpan = leftMax - leftMin
+   # rightSpan = rightMax - rightMin
 
-    valueScaled = int(value - leftMin) / int(leftSpan)
+  #  valueScaled = int(value - leftMin) / int(leftSpan)
 
-    return rightMin + (valueScaled * rightSpan)
+ #   return rightMin + (valueScaled * rightSpan)
 
-scaler_Sensor = translate(AnalogIn(ads, ADS.P0).value, 0, 1023, 0, 300)
+#scaler_Sensor = translate(AnalogIn(ads, ADS.P0).value, 0, 1023, 0, 300)
 
 
 
