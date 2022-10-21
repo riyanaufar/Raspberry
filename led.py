@@ -64,7 +64,7 @@ def translate(value, leftMin, leftMax, rightMin, rightMax):
     leftSpan = leftMax - leftMin
     rightSpan = rightMax - rightMin
 
-    valueScaled = float(value - leftMin) / float(leftSpan)
+    valueScaled = int(value - leftMin) / int(leftSpan)
 
     return rightMin + (valueScaled * rightSpan)
 
