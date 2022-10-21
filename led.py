@@ -61,7 +61,7 @@ def remap(value, leftMin, leftMax, rightMin, rightMax):
 
 while True:
     scaler_Sensor = remap(chan1.value, 0, 65535, 0, 300)
-    print(int(scaler_Sensor))
+    print(scaler_Sensor)
     time.sleep(2)
 
 
