@@ -59,12 +59,16 @@ def remap(value, leftMin, leftMax, rightMin, rightMax):
 
     #return rightMin + (valueScaled * rightSpan)
 
+
+print("{:>5}\t{:>5}".format('1', '2', '3', '4'))
+
 while True:
     scaler_Sensor1 = remap(chan1.value, 0, 65535, 0, 300)
     scaler_Sensor2 = remap(chan2.value, 0, 65535, 0, 300)
     scaler_Sensor3 = remap(chan3.value, 0, 65535, 0, 300)
     scaler_Sensor4 = remap(chan4.value, 0, 65535, 0, 300)
     print(int(scaler_Sensor2))
+    print("{:>5}\t{:>5.5f}".format(int(scaler_Sensor1, scaler_Sensor2, scaler_Sensor3, scaler_Sensor4))
     time.sleep(2)
 
 
