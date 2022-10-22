@@ -15,11 +15,6 @@ GPIO.setup(servo2PIN, GPIO.OUT)
 servoUp = GPIO.PWM(servo1PIN, 50) # GPIO 12 for PWM with 50Hz
 servoDown = GPIO.PWM(servo2PIN, 50) # GPIO 13 for PWM with 50Hz
 
-servoUp.start(2.5) # Initialization
-servoDown.start(2.5) # Initialization
-
-servoUp.ChangeDutyCycle()
-servoDown.ChangeDutyCycle()
 
 #Buat i2c bus
 i2c = busio.I2C(board.SCL, board.SDA)
@@ -27,15 +22,6 @@ i2c = busio.I2C(board.SCL, board.SDA)
 #buat ADC objek menggunakan i2c bus
 ads = ADS.ADS1015(i2c)
 ads.gain = 1
-
-#create single-ended input on channel 0-3
-chan1 = AnalogIn(ads, ADS.P0) #ldr left
-chan2 = AnalogIn(ads, ADS.P1) #ldr right
-chan3 = AnalogIn(ads, ADS.P2) #ldr up
-chan4 = AnalogIn(ads, ADS.P3) #ldr down
-
-#servoUp_value =
-#servoDown_value =
 
 
 #MAPPING LDR VALUE
@@ -48,6 +34,21 @@ def remap(value, leftMin, leftMax, rightMin, rightMax):
     # Convert the 0-1 range into a value in the right range.
     # return int(rightMin + (valueScaled * rightSpan))
     return rightMin + (valueScaled * rightSpan)
+
+
+#create single-ended input on channel 0-3
+chan1 = AnalogIn(ads, ADS.P0) #ldr left
+chan2 = AnalogIn(ads, ADS.P1) #ldr right
+chan3 = AnalogIn(ads, ADS.P2) #ldr up
+chan4 = AnalogIn(ads, ADS.P3) #ldr down
+
+servoUp_value = remap()
+servoDown_value = remap()
+
+servoUp.start(2.5) # Initialization
+servoDown.start(2.5) # Initialization
+
+
 
 
 while True:
@@ -64,6 +65,9 @@ while True:
     print('sensor 4')
     print(int(scaler_Sensor4))
     time.sleep(2)
+
+    servoUp.ChangeDutyCycle(servoUp_value)
+    servoDown.ChangeDutyCycle(servoDown_value)
 
 
 
