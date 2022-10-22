@@ -31,6 +31,9 @@ chan2 = AnalogIn(ads, ADS.P1) #ldr right
 chan3 = AnalogIn(ads, ADS.P2) #ldr up
 chan4 = AnalogIn(ads, ADS.P3) #ldr down
 
+#servoUp_value =
+#servoDown_value =
+
 
 #MAPPING LDR VALUE
 def remap(value, leftMin, leftMax, rightMin, rightMax):
@@ -68,8 +71,10 @@ while True:
     scaler_Sensor3 = remap(chan3.value, 0, 65535, 0, 300)
     scaler_Sensor4 = remap(chan4.value, 0, 65535, 0, 300)
     print(int(scaler_Sensor2))
-    print("{:>5}\t{:>5.5f}".format(int(scaler_Sensor1, scaler_Sensor2, scaler_Sensor3, scaler_Sensor4))
+    print("{:>5}\t{:>5.5f}".format(int(scaler_Sensor1, scaler_Sensor2, scaler_Sensor3, scaler_Sensor4)))
     time.sleep(2)
+
+
 
 
 
