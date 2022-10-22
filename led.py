@@ -18,6 +18,9 @@ servoDown = GPIO.PWM(servo2PIN, 50) # GPIO 13 for PWM with 50Hz
 servoUp.start(2.5) # Initialization
 servoDown.start(2.5) # Initialization
 
+servoUp.ChangeDutyCycle()
+servoDown.ChangeDutyCycle()
+
 #Buat i2c bus
 i2c = busio.I2C(board.SCL, board.SDA)
 
@@ -46,24 +49,6 @@ def remap(value, leftMin, leftMax, rightMin, rightMax):
     # return int(rightMin + (valueScaled * rightSpan))
     return rightMin + (valueScaled * rightSpan)
 
-
-
-
-#def mapping(x, in_min, in_max, out_min, out_max):
-  # return int((x - in_min)*(out_max-out_min)/(in_max-in_min)+out_min)
-
-#scaler_sensor = mapping(chan1.value, 0, 1023, 0, 300)
-
-#def translate(value, leftMin, leftMax, rightMin, rightMax):
- #   leftSpan = leftMax - leftMin
-  #  rightSpan = rightMax - rightMin
-
-   # valueScaled = int(value - leftMin) / int(leftSpan)
-
-    #return rightMin + (valueScaled * rightSpan)
-
-
-#print("{:>5}\t{:>5}".format('1', '2'))
 
 while True:
     scaler_Sensor1 = remap(int(chan1.value), 0, 65535, 0, 300)
