@@ -70,9 +70,14 @@ while True:
     scaler_Sensor2 = remap(int(chan2.value), 0, 65535, 0, 300)
     scaler_Sensor3 = remap(int(chan3.value), 0, 65535, 0, 300)
     scaler_Sensor4 = remap(int(chan4.value), 0, 65535, 0, 300)
-    print(int(scaler_Sensor1)+ 1)
-    print(int(scaler_Sensor2) + 2)
-    
+    print('sensor 1')
+    print(int(scaler_Sensor1))
+    print('sensor 2')
+    print(int(scaler_Sensor2))
+    print('sensor 3')
+    print(int(scaler_Sensor3))
+    print('sensor 4')
+    print(int(scaler_Sensor4))
     time.sleep(2)
 
 
