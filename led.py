@@ -42,8 +42,8 @@ chan2 = AnalogIn(ads, ADS.P1) #ldr right
 chan3 = AnalogIn(ads, ADS.P2) #ldr up
 chan4 = AnalogIn(ads, ADS.P3) #ldr down
 
-servoUp_value = remap()
-servoDown_value = remap()
+#servoUp_value = remap()
+#servoDown_value = remap()
 
 servoUp.start(2.5) # Initialization
 servoDown.start(2.5) # Initialization
@@ -70,12 +70,3 @@ while True:
     servoDown.ChangeDutyCycle(servoDown_value)
 
 
-
-
-
-
-#print("{:>5}\t{:>5}".format('raw', 'v'))
-
-#while True:
- #   print("{:>5}\t{:>5.5f}".format(scaler_Sensor, chan1.voltage))
-  #  time.sleep(0.1)
