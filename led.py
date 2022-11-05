@@ -66,7 +66,7 @@ while True:
     print(int(scaler_Sensor4))
     time.sleep(2)
 
-    servoUp.ChangeDutyCycle(servoUp_value)
-    servoDown.ChangeDutyCycle(servoDown_value)
+    #servoUp.ChangeDutyCycle(servoUp_value)
+    #servoDown.ChangeDutyCycle(servoDown_value)
 
 
